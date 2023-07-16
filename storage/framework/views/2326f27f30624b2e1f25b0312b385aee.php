@@ -1,7 +1,7 @@
-@php
+<?php
     $currentRouteName = Route::currentRouteName();
     $isLoggedIn = Auth::check();
-@endphp
+?>
 <style>
     #nav-item{
         background-color: black;
@@ -14,10 +14,10 @@
 <nav class="shadow-lg navbar navbar-expand-sm navbar p-3 bg-red rounded">
         <div class="container">
             <a class="navbar-brand">
-                <img src="{{ Vite::asset('resources/images/icon.png') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="<?php echo e(Vite::asset('resources/images/icon.png')); ?>" alt="" width="30" height="24" class="d-inline-block align-text-top">
                 gigiku</a>
 
-            {{-- button burger --}}
+            
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,16 +26,16 @@
                 <hr class="d-md-none text-white-50">
     
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a href="{{ route('home') }}"
-                            class="nav-link @if ($currentRouteName == 'home') active @endif">Home</a></li>
+                    <li class="nav-item"><a href="<?php echo e(route('home')); ?>"
+                            class="nav-link <?php if($currentRouteName == 'home'): ?> active <?php endif; ?>">Home</a></li>
                     <li class="nav-item">
-                           <a class="nav-link" href="{{ route('ourteam') }}">Our Team</a></li>
+                           <a class="nav-link" href="<?php echo e(route('ourteam')); ?>">Our Team</a></li>
 
-                     @if($isLoggedIn)
+                     <?php if($isLoggedIn): ?>
                         <li class="nav-item">
-                            <a href="{{ route('employees.index') }}" class="nav-link @if ($currentRouteName == 'employees.index') active @endif">Employee</a>
+                            <a href="<?php echo e(route('employees.index')); ?>" class="nav-link <?php if($currentRouteName == 'employees.index'): ?> active <?php endif; ?>">Employee</a>
                             </li>
-                        @endif
+                        <?php endif; ?>
 
 
 
@@ -44,44 +44,47 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
-                    @guest
-                        @if (Route::has('login'))
+                    <?php if(auth()->guard()->guest()): ?>
+                        <?php if(Route::has('login')): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                             </li>
-                        @endif
+                        <?php endif; ?>
     
-                        @if (Route::has('register'))
+                        <?php if(Route::has('register')): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                             </li>
-                        @endif
-                    @else
+                        <?php endif; ?>
+                    <?php else: ?>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                <?php echo e(Auth::user()->name); ?>
+
                             </a>
     
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a href="{{ route('profile') }}" class="dropdown-item"><i class="bi-person-circle me-1"></i> My
+                                <a href="<?php echo e(route('profile')); ?>" class="dropdown-item"><i class="bi-person-circle me-1"></i> My
                                     Profile</a>
     
                                 <hr>
-                                <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                                <a class="dropdown-item text-danger" href="<?php echo e(route('logout')); ?>"
                                     onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                    <i class="bi bi-lock-fill"></i> {{ __('Logout') }}
+                                    <i class="bi bi-lock-fill"></i> <?php echo e(__('Logout')); ?>
+
                                 </a>
     
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
+                                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                                    <?php echo csrf_field(); ?>
                                 </form>
                             </div>
                         </li>
-                    @endguest
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
     
 </nav>
+<?php /**PATH C:\Users\User\Documents\frame\UAS_Framework\resources\views/layouts/nav.blade.php ENDPATH**/ ?>

@@ -21,6 +21,9 @@
 <body>
     <div id="app">
         @include('layouts.nav')
+        
+        {{-- @include('layouts.sidebar') --}}
+
         @yield('content')
 
         {{-- <main class="py-4">

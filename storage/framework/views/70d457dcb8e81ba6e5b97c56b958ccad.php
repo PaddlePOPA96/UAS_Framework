@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+
 <style>
     .content.showing {
         position: relative;
@@ -32,8 +32,8 @@ margin-top:5rem;
 }
 </style>
 
-@section('content')
-<div class="content showing bg-auto" style="background-image: url({{ Vite::asset('resources/images/home.jpg') }}); background-repeat: no-repeat; background-size: cover;">
+<?php $__env->startSection('content'); ?>
+<div class="content showing bg-auto" style="background-image: url(<?php echo e(Vite::asset('resources/images/home.jpg')); ?>); background-repeat: no-repeat; background-size: cover;">
     <div class="row">
       <div class="col-md-6 d-flex align-items-center justify-content-start">
         <div>
@@ -44,4 +44,6 @@ margin-top:5rem;
       </div>
     </div>
   </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\User\Documents\frame\UAS_Framework\resources\views/home.blade.php ENDPATH**/ ?>
