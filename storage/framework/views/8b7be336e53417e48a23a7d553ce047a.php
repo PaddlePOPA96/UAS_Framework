@@ -11,12 +11,12 @@
     <div class="wrapper">
         <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="carousel">
-            <img src="{{ Vite::asset('resources/images/about_us/profile1.png') }}" alt="img" draggable="false">
-            <img src="{{ Vite::asset('resources/images/about_us/profile11.png') }}" alt="img" draggable="false">
-            <img src="{{ Vite::asset('resources/images/about_us/profile12.png') }}" alt="img" draggable="false">
-            <img src="{{ Vite::asset('resources/images/about_us/profile13.png') }}" alt="img" draggable="false">
-            <img src="{{ Vite::asset('resources/images/about_us/profile14.png') }}" alt="img" draggable="false">
-            <img src="{{ Vite::asset('resources/images/about_us/profile15.png') }}" alt="img" draggable="false">
+            <img src="<?php echo e(Vite::asset('resources/images/about_us/profile1.png')); ?>" alt="img" draggable="false">
+            <img src="<?php echo e(Vite::asset('resources/images/about_us/profile11.png')); ?>" alt="img" draggable="false">
+            <img src="<?php echo e(Vite::asset('resources/images/about_us/profile12.png')); ?>" alt="img" draggable="false">
+            <img src="<?php echo e(Vite::asset('resources/images/about_us/profile13.png')); ?>" alt="img" draggable="false">
+            <img src="<?php echo e(Vite::asset('resources/images/about_us/profile14.png')); ?>" alt="img" draggable="false">
+            <img src="<?php echo e(Vite::asset('resources/images/about_us/profile15.png')); ?>" alt="img" draggable="false">
             
 
         </div>
@@ -24,7 +24,7 @@
       </div>
 </section>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script type="module">
 
 const carousel = document.querySelector(".carousel"), //container dari slider 
@@ -46,4 +46,5 @@ arrowIcons.forEach(icon => {
 });
 </script>
 
-@endpush --}}
+<?php $__env->stopPush(); ?> --}}
+<?php /**PATH C:\Users\User\Documents\frame\UAS_Framework\resources\views/ourteam.blade.php ENDPATH**/ ?>

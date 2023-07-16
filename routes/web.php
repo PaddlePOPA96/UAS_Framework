@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OurTeamController;
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,8 +33,12 @@ Route::middleware(['auth'])->group(function () {
 
 Route::view('/', 'home')->name('home');
 Route::get('home', [HomeController::class, 'index'])->name('home');
-Route::get('/ourteam', OurTeamController::class)->name('ourteam');
+Route::get('/ourteam', [OurTeamController::class, 'index'])->name('ourteam');
 
 Route::put('/data/{id}', [DataController::class, 'update'])->name('data.update');
+
+Route::get('/dashboard', function(){
+    return view('dashboard.index');
+})->middleware('auth');
 
 Auth::routes();
