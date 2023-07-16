@@ -17,6 +17,3 @@ arrowIcons.forEach(icon => {
 });
 
 
-@section('scripts')
-<script src="{{ asset('js/slider.js') }}"></script>
-@endsection
